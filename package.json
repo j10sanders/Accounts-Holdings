@@ -5,7 +5,7 @@
   "scripts": {
     "devserver": "webpack-dev-server --config webpack.config.js --content-base ./devserver_files --port 4343 --colors",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./src/main.js"
+    "start": "node ./source/main.js"
   },
   "keywords": [
     "webpack",
