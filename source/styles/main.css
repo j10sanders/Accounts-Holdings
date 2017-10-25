@@ -1,0 +1,26 @@
+h1, body {
+	text-align: center;
+	//font-family: "Abel", Arial, sans-serif;
+}
+
+/*.mdl-layout__header {position : fixed;  display: -webkit-box;  display: -webkit-flex;  display: -ms-flexbox;  display: flex;  -webkit-box-orient: vertical;  -webkit-box-direction: normal;  -webkit-flex-direction: column;
+}*/
+
+
+
+#app {
+	text-align: center;
+}
+
+#accounts {
+	/*float: left;*/
+	display: inline-block;
+	vertical-align: top;
+}
+
+#holdings {
+	/*float: left;*/
+	display: inline-block;
+	vertical-align: top;
+	margin-left: 20px;
+}
