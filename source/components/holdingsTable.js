@@ -1,40 +1,25 @@
 import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
 import Handsontable from 'handsontable';
 require('handsontable/dist/handsontable.full.css');
-import {Positions} from './../data/holdings';
-import {Accounts} from './../data/accounts';
-import {accountFormater, accrue, percentages} from './../scripts/resources/dataFormatter';
 import {customNumber, percentage} from './../scripts/resources/renderers';
 
 class HoldingsTable extends Component {
-	constructor() {
-		super();
-		this.state = { 
-		};
+	constructor(props) {
+		super(props);
 	}
 
 	componentDidMount(){
 		this.hot = new Handsontable(this.refs.holdingsTable, {
-			data: percentages(accrue(accountFormater({Accounts}, {Positions}))),
-			colHeaders: ['type', 'sum', 'percent of total'],
-			autoColumnSize: true,
-			cells: (row, col, prop) => {
-				let cellProperties = {};
-				if (col == 1) {
-					cellProperties.renderer = customNumber
-				}
-				else if (col == 2) {
-					cellProperties.renderer = percentage
-				}
-				return cellProperties
-			},
+			data: this.props.positions,
+			colHeaders: ['account_id', 'ticker_name', 'ticker', 'price', 'quantity'],
+			columns: [
+				{data: 'account_id'},
+				{data: 'ticker_name'},
+				{data: 'ticker'},
+				{data: 'price', renderer: customNumber},
+				{data: 'quantity'},
+			],
 		})
-		this.onDataUpdated()
-	}
-
-	onDataUpdated(){
-		this.hot.render();
 	}
 
 	render() {
@@ -43,6 +28,5 @@ class HoldingsTable extends Component {
 		);
 	}
 }
-
 
 export default HoldingsTable;

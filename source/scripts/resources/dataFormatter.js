@@ -1,9 +1,9 @@
 const _ = require('lodash');
 
-export const accountFormater = (accounts, holdings) => {
+const accountFormater = (accounts, holdings) => {
 	let resultAccounts = {}
-	for (let a of accounts['Accounts']){
-		for (let p of holdings['Positions']){
+	for (let a of accounts){
+		for (let p of holdings){
 			if (p['account_id'] == a['id']){ 
 				if (a['type'] in resultAccounts){
 					resultAccounts[a['type']].push(p)
@@ -14,7 +14,7 @@ export const accountFormater = (accounts, holdings) => {
 	return resultAccounts
 }
 
-export const accrue = (resultAccounts) => {
+const accrue = (resultAccounts) => {
  	let accrued = {}
 	for (let [key, value] of Object.entries(resultAccounts)) {
 		for (let val of value){
@@ -27,7 +27,7 @@ export const accrue = (resultAccounts) => {
 	return accrued
 }
 
-export const percentages = (accrued) => {
+const percentages = (accrued) => {
 	let percents = []
 	let total = _.sum(_.values(accrued))
 	for (let [key, value] of Object.entries(accrued)) {
@@ -35,4 +35,8 @@ export const percentages = (accrued) => {
 	}
 	//{529: 31.00230486593964, 401k: 8.510094684928154, Brokerage Account: 41.93037371202248, Roth 401k: 18.557226737109733}
 	return percents
+}
+
+export const byValue = (accounts, holdings) => {
+	return percentages(accrue(accountFormater(accounts, holdings)))
 }
