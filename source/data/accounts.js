@@ -1,4 +1,4 @@
-const data = 
+export const Accounts = 
 {
   "Accounts": [
     {
@@ -54,4 +54,3 @@ const data =
   ]
 }
 
-export const Accounts = data['Accounts']

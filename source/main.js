@@ -13,6 +13,9 @@ class App extends Component {
 	}
 
 	render() {
+
+		let positions = Positions['Positions']
+		let accounts = Accounts['Accounts']
 		return (
 			<div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">
       			<header className="mdl-layout__header">
@@ -24,11 +27,11 @@ class App extends Component {
 			    	<div className="page-content">
 				    	<div id='accounts'>
 				    		<h4>Holdings</h4>
-				    		<HoldingsTable positions={Positions} />
+				    		<HoldingsTable positions={positions} />
 				    	</div>
 						<div id='holdings'>
 							<h4>Account Type by Value</h4>
-							<AccountByValue positions={Positions} accounts={Accounts} />
+							<AccountByValue positions={positions} accounts={accounts} />
 						</div>
 					</div>
 			  </main>

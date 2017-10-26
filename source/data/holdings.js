@@ -1,4 +1,4 @@
-const data = {
+export const Positions = {
   "Positions": [
     {
       "id": 93622,
@@ -290,5 +290,3 @@ const data = {
     }
   ]
 }
-
-export const Positions = data['Positions']
